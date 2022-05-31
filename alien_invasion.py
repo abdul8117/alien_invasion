@@ -37,21 +37,19 @@ class AlienInvasion:
     def _check_events(self):
         """Respond to keypresses and mouse events."""
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
-            elif event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
 
     def _check_keydown_events(self, event):
         """Respond to keypresses."""
+        if event.key == pygame.K_q:
+            sys.exit()
         if event.key == pygame.K_RIGHT:
             self.ship.moving_right = True
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = True
-        elif event.key == pygame.K_q:
-            sys.exit()
 
     def _check_keyup_events(self, event):
         """Respond to key releases."""
